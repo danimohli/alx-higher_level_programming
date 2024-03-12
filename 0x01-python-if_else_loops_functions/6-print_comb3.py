@@ -2,6 +2,6 @@
 
 for a in range(9):
     for b in range(10):
-        if a < b and b < 9:
+        if a < b:
             print("{}{},".format(a, b), end=' ')
 print("{}{}".format(a, b))
