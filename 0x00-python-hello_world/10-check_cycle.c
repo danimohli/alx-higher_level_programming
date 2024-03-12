@@ -1,5 +1,5 @@
 #include "lists.h"
-/** 
+/**
  * check_cycle - Function to check if a linked list has a cycle
  * @list: list to check
  * Return: 0 / 1
@@ -21,5 +21,5 @@ int check_cycle(listint_t *list)
 		slow = slow->next;
 		fast = fast->next->next;
 	}
-	return 0;
+	return (0);
 }
