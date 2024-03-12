@@ -2,6 +2,6 @@
 
 for x in range(0, 100):
     if x < 99:
-        print(x, end=', ')
+        print(f"{x:d}, ", end=' ')
     else:
-        print(x)
+        print(f"{x}")
