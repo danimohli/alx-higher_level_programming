@@ -3,7 +3,7 @@
 # To determine Max in list
 def max_integer(my_list=[]):
 
-    maxx = 0
+    maxx = my_list[0]
     x = 0
 
     # checking if list is empty
