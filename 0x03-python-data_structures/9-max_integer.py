@@ -4,15 +4,13 @@
 def max_integer(my_list=[]):
 
     maxx = my_list[0]
-    x = 0
 
     # checking if list is empty
     if len(my_list) == 0:
         return None
 
     # loop to check max number
-    while x < len(my_list) - 1:
-        if maxx <= my_list[x]:
-            maxx = my_list[x]
-        x += 1
+    for x in my_list:
+        if maxx <= x:
+            maxx = x
     return maxx
