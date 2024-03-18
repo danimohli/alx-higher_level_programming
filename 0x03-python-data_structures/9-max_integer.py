@@ -11,7 +11,7 @@ def max_integer(my_list=[]):
         return None
 
     # loop to check max number
-    while x < len(my_list):
+    while x < len(my_list) - 1:
         if maxx <= my_list[x]:
             maxx = my_list[x]
         x += 1
