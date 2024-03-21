@@ -2,8 +2,6 @@
 
 # function to find square root of matrix of list
 
-#!/usr/bin/python3
-
 def square_matrix_simple(matrix=[]):
 
     # copy matrix to modify
