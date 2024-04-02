@@ -9,6 +9,6 @@ defsafe_print_integer_err(value):
     try:
         print('{:d}'.format(value))
     except (TypeError, ValueError) as ra:
-        stderr.write('Exception: {}\n'.format(ra))
+        sys.stderr.write('Exception: {}\n'.format(ra))
         return (False)
     return (True)
