@@ -2,21 +2,20 @@
 
 # division of two list function using list_2 to divide thriugh list_2
 def list_division(my_list_1, my_list_2, list_length):
-
-    div_list = []
+    result = []
     for i in range(list_length):
         try:
-            div_list.append(my_list_1[i] / my_list_2[i])
+            result.append(my_list_1[i] / my_list_2[i])
             continue
         except ZeroDivisionError:
-            div_list.append(0)
             print("division by 0")
+            result.append(0)
         except TypeError:
-            div_list.append(0)
             print("wrong type")
+            result.append(0)
         except IndexError:
-            div_list.append(0)
             print("out of range")
+            result.append(0)
         finally:
             pass
-    return(div_list)
+    return(result)
