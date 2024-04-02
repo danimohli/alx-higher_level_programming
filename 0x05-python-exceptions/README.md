@@ -1,0 +1,1 @@
+Python-exceptions take a side of handling errors (sytax (parse) error, Exceptions error). It all abouttaking care of possible error that might come in code excution and terminating it. With understanding exception handling error could be handled without running code stoping promptly.
