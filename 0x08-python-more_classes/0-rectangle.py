@@ -2,6 +2,7 @@
 
 """This module defines a simple Rectangle class."""
 
+
 class Rectangle:
     """Represents a rectangle with width and height.
 
@@ -12,4 +13,3 @@ class Rectangle:
         None
     """
     pass
-
