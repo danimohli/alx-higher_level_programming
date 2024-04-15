@@ -3,4 +3,5 @@
 
 
 class BaseGeometry:
+    """ Documentation for empty class BassGeometry"""
     pass
