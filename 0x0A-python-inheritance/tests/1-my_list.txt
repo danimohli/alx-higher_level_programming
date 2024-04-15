@@ -1,26 +1,73 @@
-The 1-my_list Module:
+The ``1-my_list`` module
+======================
 
-    >>> is_same_class = __import__("1-my_list").is_same_class
+This is a text file in reStructuredText format to test the above module.
 
-Make Sure Documentation Exists:
+Using ``MyList``
+-------------------
 
-    >>> module_documentation = __import__("1-my_list").__doc__
-    >>> print(len(module_documentation) > 0)
-    True
+First import ``MyList`` from the ``1-my_list`` module:
 
-    >>> function_documentation = __import__("1-my_list").is_same_class.__doc__
-    >>> print(len(function_documentation) > 0)
-    True
+    >>> MyList = __import__('1-my_list').MyList
 
-Correct Usage:
+Now use it:
 
-    >>> print(is_same_class(1, 2))
-    3
-  >>> l1.print_sorted()
+    >>> l1 = MyList()
+    >>> type(l1)
+    <class '1-my_list.MyList'>
+
+    >>> print(l1)
     []
 
-On Errors:
+This Class inherits from list
 
-    >>> print(is_same_class(4, "School"))
+    >>> issubclass(MyList, list)
+    True
+
+This class only defines one extra function compare to list: print_sorted
+
+    >>> 'print_sorted' in dir(MyList)
+    True
+
+    >>> l2 = [3, 7, 0, 1, 6]
+    >>> l2.print_sorted()
     Traceback (most recent call last):
-    TypeError: b must be an integer
+    AttributeError: 'list' object has no attribute 'print_sorted'
+
+It is assumed all the elements of the list will be integers.
+
+    >>> def test_i(tests=[]):
+    ...    for test in tests:
+    ...	          try:
+    ...		      test.print_sorted()
+    ...	          except Exception as e:
+    ...		      print("[{}] {}".format(e.__class__.__name__, e))
+    ...
+
+``print_sorted`` prints the elements in sorted order, but does not change
+the order of the elements in the list.
+
+    >>> l1.print_sorted()
+    []
+
+    >>> l3 = MyList(l2)
+    >>> print(l3)
+    [3, 7, 0, 1, 6]
+
+    >>> l3.print_sorted()
+    [0, 1, 3, 6, 7]
+
+    >>> print(l3)
+    [3, 7, 0, 1, 6]
+
+Works with negative numbers as well
+
+    >>> l4 = MyList([-2513461346364, -1285720873193, 0, -345662577682686554, 1])
+    >>> l4
+    [-2513461346364, -1285720873193, 0, -345662577682686554, 1]
+
+    >>> l4.print_sorted()
+    [-345662577682686554, -2513461346364, -1285720873193, 0, 1]
+
+    >>> l4
+    [-2513461346364, -1285720873193, 0, -345662577682686554, 1]
