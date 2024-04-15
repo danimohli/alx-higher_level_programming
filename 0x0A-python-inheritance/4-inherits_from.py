@@ -1,4 +1,4 @@
-#!/usr/bin/pyth3
+#!/usr/bin/python3
 
 """ inheritaotr """
 
