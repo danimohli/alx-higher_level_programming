@@ -5,5 +5,4 @@
 
 def lookup(obj):
     """ look up function for listing attr of class """
-    return [attr for attr in dir(obj) if not
-            callable(getattr(obj, attr)) or not attr.startswith("__")]
+    return dir(obj)
