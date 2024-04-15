@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-""" Attribute same class check """
-
 
 def is_same_class(obj, a_class):
 
