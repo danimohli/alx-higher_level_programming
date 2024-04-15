@@ -4,6 +4,9 @@
 
 
 def is_same_class(obj, a_class):
+
+    """ function Documentation """
+
     """
     Check if the object is exactly an instance of the specified class.
 
