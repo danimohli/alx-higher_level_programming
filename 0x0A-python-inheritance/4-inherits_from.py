@@ -10,7 +10,6 @@ def inherits_from(obj, a_class):
     class that inherited (directly or indirectly)
     from the specified class.
     """
-
     """
     Args:
     obj: Any object.
