@@ -1,56 +1,108 @@
-# base_geometry.py
+The ``7-base_geometry`` module
+======================
 
-class BaseGeometry:
-    """
-    A base class for geometries.
+This is a text file in reStructuredText format to test the above module.
 
-    Methods:
-    area(self): Compute the area of the geometry.
-    integer_validator(self, name, value): Validate if a value is an integer and greater than 0.
+Using ``BaseGeometry``
+-------------------
 
-    >>> geometry = BaseGeometry()
-    >>> geometry.area()
+First import ``BaseGeometry`` from the ``7-base_geometry`` module:
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Now use it:
+
+    >>> bg = BaseGeometry()
+    >>> type(bg)
+    <class '7-base_geometry.BaseGeometry'>
+
+
+This class should define 2 functions
+
+``area``
+    >>> 'area' in dir(BaseGeometry)
+    True
+
+``integer_validator``
+    >>> 'integer_validator' in dir(BaseGeometry)
+    True
+
+Should test publicity of methods
+    >>> BaseGeometry.area	#doctest: +ELLIPSIS
+    <function BaseGeometry.area at 0x...>
+
+    >>> bg.integer_validator	#doctest: +ELLIPSIS
+    <bound method BaseGeometry.integer_validator of <7-base_geometry.BaseGeometry object at 0x...>>
+
+And no instance attributes or methods
+    >>> dir(bg) == dir(BaseGeometry)
+    True
+
+Test ``area``
+-------------
+It is not implemented
+    >>> bg.area()
     Traceback (most recent call last):
-        ...
     Exception: area() is not implemented
-    >>> geometry.integer_validator("test", 5)
-    >>> geometry.integer_validator("test", -2)
+
+
+
+Test ``integer_validator``
+--------------------------
+Integer takes in 2 arguments
+
+    >>> bg.integer_validator()
     Traceback (most recent call last):
-        ...
-    ValueError: test must be greater than 0
-    >>> geometry.integer_validator("test", "hello")
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+    >>> bg.integer_validator(1)
     Traceback (most recent call last):
-        ...
-    TypeError: test must be an integer
-    """
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-    def area(self):
-        """
-        Compute the area of the geometry.
-
-        Raises:
-        Exception: Indicating that the method is not implemented.
-        """
-        raise Exception("area() is not implemented")
-
-    def integer_validator(self, name, value):
-        """
-        Validate if the value is an integer and greater than 0.
-
-        Args:
-        name: A string representing the name of the value.
-        value: The value to be validated.
-
-        Raises:
-        TypeError: If value is not an integer.
-        ValueError: If value is less than or equal to 0.
-        """
-        if not isinstance(value, int):
-            raise TypeError(f"{name} must be an integer")
-        if value <= 0:
-            raise ValueError(f"{name} must be greater than 0")
+    >>> bg.integer_validator(1, 2, 3)
+    Traceback (most recent call last):
+    TypeError: integer_validator() takes 3 positional arguments but 4 were given
 
 
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
+The first argument should be a string (no check on that yet)
+
+The second argument should be a strictly positive integer
+
+Test for type
+    >>> def test_i(tests=[]):
+    ...    for test in tests:
+    ...	          try:
+    ...		             bg.integer_validator("name", test)
+    ...			            except Exception as e:
+    ...				           	        print("[{}] {} for type {}".format(e.__class__.__name__, e, type(test)))
+    ...
+
+    >>> tests = [True, 1.24, -76.87, set(), [1, 2], "a string", {"a":1}, ("11", 3), test_i, bg, BaseGeometry, None]
+    >>> test_i(tests)
+    [TypeError] name must be an integer for type <class 'bool'>
+    [TypeError] name must be an integer for type <class 'float'>
+    [TypeError] name must be an integer for type <class 'float'>
+    [TypeError] name must be an integer for type <class 'set'>
+    [TypeError] name must be an integer for type <class 'list'>
+    [TypeError] name must be an integer for type <class 'str'>
+    [TypeError] name must be an integer for type <class 'dict'>
+    [TypeError] name must be an integer for type <class 'tuple'>
+    [TypeError] name must be an integer for type <class 'function'>
+    [TypeError] name must be an integer for type <class '7-base_geometry.BaseGeometry'>
+    [TypeError] name must be an integer for type <class 'type'>
+    [TypeError] name must be an integer for type <class 'NoneType'>
+
+
+Test for sign
+    >>> bg.integer_validator("name", -23)
+    Traceback (most recent call last):
+    ValueError: name must be greater than 0
+
+
+    >>> bg.integer_validator("name", 0)
+    Traceback (most recent call last):
+    ValueError: name must be greater than 0
+
+
+When it works it does not return anything
+    >>> bg.integer_validator("name", 3)
