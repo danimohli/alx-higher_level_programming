@@ -19,7 +19,7 @@ if os.path.exists(file):
     thd = load_from_json_file(file)
 else:
     with open(file, 'w') as f:
-        thd= []
+        thd = []
         save_to_json_file([], file)
 
 for arg in range(1, len(sys.argv)):
