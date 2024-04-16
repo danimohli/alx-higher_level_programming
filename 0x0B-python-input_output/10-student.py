@@ -1,4 +1,4 @@
-#!/usr/python3
+#!/usr/bin/python3
 """elabo... on class std json"""
 
 
