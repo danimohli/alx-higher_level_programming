@@ -5,9 +5,8 @@ Module for a BaseGeometry class
 
 
 class BaseGeometry:
-    """
-    still empty, area not implemented
-    """
+    """still empty, area not implemented"""
+
     def area(self):
         raise Exception('area() is not implemented')
 
@@ -23,9 +22,8 @@ class Rectangle(BaseGeometry):
     rectangle clasee herencia from BaseGeometry
     """
     def __init__(self, width, height):
-        """
-        init constructor
-        """
+        """init constructor"""
+
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
@@ -42,20 +40,14 @@ class Rectangle(BaseGeometry):
 
 
 class Square(Rectangle):
-    """
-    class Square that inherits from Rectangle
-    """
+    """class Square that inherits from Rectangle"""
     def __init__(self, size):
-        """ constructor, init square """
         if self.integer_validator("size", size) is None:
             self.__size = size
 
         super().__init__(size, size)
 
     def __str__(self):
-        """returns the string representation of the object. This method is
-        called when print() or str() function is invoked on an object."""
-
         return "[Square] {}/{}".format(self.__size, self.__size)
 
     def area(self):
