@@ -3,7 +3,7 @@
 
 
 def class_to_json(obj):
-    '''json claass'''
+    """json claass"""
 
     json_dict = {}
     for attr_name in dir(obj):
