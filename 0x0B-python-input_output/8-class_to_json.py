@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-"""move class to json"""
+""" move class to json """
 
 
 def class_to_json(obj):
-    """json claass"""
+    """ json claass """
 
     json_dict = {}
+
+    # loop obj
     for attr_name in dir(obj):
         if not attr_name.startswith("__") and not
         callable(getattr(obj, attr_name)):
