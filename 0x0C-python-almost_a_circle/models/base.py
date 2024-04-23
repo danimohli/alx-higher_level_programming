@@ -44,3 +44,11 @@ class Base:
         '''Write JSON string to file'''
         with open(filename, 'w') as file:
             file.write(json_string)
+
+    @staticmethod
+    def from_json_string(json_string):
+        '''Converts JSON string to list of dictionaries'''
+        if not json_string:
+            return []
+        else:
+            return json.loads(json_string)
