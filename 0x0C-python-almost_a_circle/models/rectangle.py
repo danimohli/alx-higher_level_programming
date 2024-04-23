@@ -14,34 +14,42 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
-    @property
-    def width(self):
-        return self.__width
+        """ @ property """
+        @property
+        def width(self):
+            return self.__width
 
-    @width.setter
-    def width(self, value):
-        self.__width = value
+        """ setter """
+        @width.setter
+        def width(self, value):
+            self.__width = value
 
-    @property
-    def height(self):
-        return self.__height
+        """property"""
+        @property
+        def height(self):
+            return self.__height
 
-    @height.setter
-    def height(self, value):
-        self.__height = value
+        """setter"""
+        @height.setter
+        def height(self, value):
+            self.__height = value
 
-    @property
-    def x(self):
-        return self.__x
+        """proprt"""
+        @property
+        def x(self):
+            return self.__x
 
-    @x.setter
-    def x(self, value):
-        self.__x = value
+        """setter"""
+        @x.setter
+        def x(self, value):
+            self.__x = value
 
-    @property
-    def y(self):
-        return self.__y
+        """prprr"""
+        @property
+        def y(self):
+            return self.__y
 
-    @y.setter
-    def y(self, value):
-        self.__y = value
+        """setter"""
+        @y.setter
+        def y(self, value):
+            self.__y = value
