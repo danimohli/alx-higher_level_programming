@@ -5,52 +5,97 @@ from models.base import Base  # Importing the Base class
 
 
 class Rectangle(Base):
-    """REc class inherit Base"""
+    """
+    A class representing a rectangle.
 
-    """ init object """
+    Attributes:
+        width (int): The width of the rectangle.
+        height (int): The height of the rectangle.
+        x (int): The x-coordinate of the rectangle's position.
+        y (int): The y-coordinate of the rectangle's position.
+    """
+
     def __init__(self, width, height, x=0, y=0, id=None):
+        """
+        Constructs a new Rectangle instance.
+
+        Args:
+            width (int): The width of the rectangle.
+            height (int): The height of the rectangle.
+            x (int, optional): The x-coordinate of the rectangle's position.
+            y (int, optional): The y-coordinate of the rectangle's position.
+            id (int, optional): The unique identifier of the rectangle.
+        """
         super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
 
-        """ @ property """
-        @property
-        def width(self):
-            return self.__width
+    @property
+    def width(self):
+        """
+        int: The width of the rectangle.
+        """
+        return self.__width
 
-        """ setter """
-        @width.setter
-        def width(self, value):
-            self.__width = value
+    @width.setter
+    def width(self, value):
+        """
+        Sets the width of the rectangle.
 
-        """property"""
-        @property
-        def height(self):
-            return self.__height
+        Args:
+            value (int): The new width value.
+        """
+        self.__width = value
 
-        """setter"""
-        @height.setter
-        def height(self, value):
-            self.__height = value
+    @property
+    def height(self):
+        """
+        int: The height of the rectangle.
+        """
+        return self.__height
 
-        """proprt"""
-        @property
-        def x(self):
-            return self.__x
+    @height.setter
+    def height(self, value):
+        """
+        Sets the height of the rectangle.
 
-        """setter"""
-        @x.setter
-        def x(self, value):
-            self.__x = value
+        Args:
+            value (int): The new height value.
+        """
+        self.__height = value
 
-        """prprr"""
-        @property
-        def y(self):
-            return self.__y
+    @property
+    def x(self):
+        """
+        int: The x-coordinate of the rectangle's position.
+        """
+        return self.__x
 
-        """setter"""
-        @y.setter
-        def y(self, value):
-            self.__y = value
+    @x.setter
+    def x(self, value):
+        """
+        Sets the x-coordinate of the rectangle's position.
+
+        Args:
+            value (int): The new x-coordinate value.
+        """
+        self.__x = value
+
+    @property
+    def y(self):
+        """
+        int: The y-coordinate of the rectangle's position.
+        """
+        return self.__y
+
+    @y.setter
+    def y(self, value):
+        """
+        Sets the y-coordinate of the rectangle's position.
+
+        Args:
+            value (int): The new y-coordinate value.
+        """
+        self.__y = value
