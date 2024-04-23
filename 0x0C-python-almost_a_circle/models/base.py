@@ -3,6 +3,7 @@
 
 import json
 import os
+import csv
 
 
 class Base:
@@ -84,3 +85,53 @@ class Base:
 
         '''Create instances from the dictionaries and return as a list'''
         return [cls.create(**dictionary) for dictionary in dictionaries]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        '''Serializes list of instances to CSV file'''
+
+        '''Construct the filename based on the class name'''
+        filename = "{}.csv".format(cls.__name__)
+
+        '''Open the file for writing'''
+        with open(filename, 'w', newline='') as file:
+            writer = csv.writer(file)
+
+            '''Write header based on class type'''
+            if cls.__name__ == 'Rectangle':
+                writer.writerow(["id", "width", "height", "x", "y"])
+            elif cls.__name__ == 'Square':
+                writer.writerow(["id", "size", "x", "y"])
+
+            '''Write each instance's attributes to the file'''
+            for obj in list_objs:
+                writer.writerow(obj.to_csv())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        '''Deserializes instances from CSV file'''
+
+        filename = "{}.csv".format(cls.__name__)
+
+        if not os.path.exists(filename):
+            return []
+
+        '''Open the file for reading'''
+        with open(filename, 'r', newline='') as file:
+            reader = csv.reader(file)
+
+            next(reader, None)
+
+            '''Create instances from the CSV data'''
+            instances = []
+            for row in reader:
+                if cls.__name__ == 'Rectangle':
+                    instances.append(cls.create(id=int(row[0]),
+                                     width=int(row[1]), height=int(row[2]),
+                                     x=int(row[3]), y=int(row[4])))
+                elif cls.__name__ == 'Square':
+                    instances.append(cls.create(id=int(row[0]),
+                                     size=int(row[1]),
+                                     x=int(row[2]), y=int(row[3])))
+
+        return instances
