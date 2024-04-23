@@ -2,6 +2,7 @@
 """ python class project"""
 
 import json
+import os
 
 
 class Base:
@@ -65,3 +66,21 @@ class Base:
 
         dummy_instance.update(**dictionary)
         return dummy_instance
+
+    @classmethod
+    def load_from_file(cls):
+        '''Returns a list of instances from file'''
+
+        filename = "{}.json".format(cls.__name__)
+
+        '''Check if the file exists'''
+        if not os.path.exists(filename):
+            return []
+
+        '''Read the contents of the file and convert to list of dictionaries'''
+        with open(filename, 'r') as file:
+            json_string = file.read()
+            dictionaries = cls.from_json_string(json_string)
+
+        '''Create instances from the dictionaries and return as a list'''
+        return [cls.create(**dictionary) for dictionary in dictionaries]
