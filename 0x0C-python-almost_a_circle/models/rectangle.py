@@ -125,8 +125,8 @@ class Rectangle(Base):
                 self.height = args[2]
                 self.x = args[3]
                 self.y = args[4]
-            except:
-                pass
+            except IndexError:
+                print("Error: Not enough arguments provided for update.")
         else:
             if 'id' in kwargs:
                 self.id = kwargs['id']
