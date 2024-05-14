@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 -m py_compile $PYFILE > my_main.pyc && export PYFILE=my_main.py
+python3 -m compileall -b "$PYFILE"
