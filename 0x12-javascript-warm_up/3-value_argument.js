@@ -2,9 +2,9 @@
 
 const argv = process.argv.slice(2);
 
-if (argv.length) {
+if (argv[0]) {
   let idx = 0;
-  while (idx < argv.length) {
+  while (argv[idx]) {
     console.log(argv[idx]);
     idx++;
   }
