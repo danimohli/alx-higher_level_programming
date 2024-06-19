@@ -3,11 +3,7 @@
 const argv = process.argv.slice(2);
 
 if (argv[0]) {
-  let idx = 0;
-  while (argv[idx]) {
-    console.log(argv[idx]);
-    idx++;
-  }
+	console.log(argv.join(' '));
 } else {
   console.log('No argument');
 }
