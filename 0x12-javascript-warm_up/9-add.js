@@ -5,7 +5,7 @@ const argv = process.argv.slice(2);
 const a = parseInt(argv[0], 10);
 const b = parseInt(argv[1], 10);
 
-function add(a, b) {
+function add (a, b) {
   return a + b;
 }
 if (!isNaN(a) && !isNaN(b)) {
