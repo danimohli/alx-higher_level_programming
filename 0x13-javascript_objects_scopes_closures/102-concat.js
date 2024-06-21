@@ -26,7 +26,6 @@ fs.readFile(firstFile, 'utf8', (err, data1) => {
     fs.writeFile(destinationFile, concatenatedData, 'utf8', (err) => {
       if (err) {
         console.error(`Error writing to file ${destinationFile}:`, err);
-        return;
       }
     });
   });
