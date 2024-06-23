@@ -24,30 +24,14 @@ import sys
 
 
 if __name__ == "__main__":
-
-    username = sys.argv[1]
-    password = sys.argv[2]
-    db_name = sys.argv[3]
-    state_name = sys.argv[4]
-
-    db = MySQLdb.connect(host="localhost", user=username,
-                         passwd=password, db=db_name, port=3306)
-
+    db = MySQLdb.connect(host="localhost", user=sys.argv[1],
+                         passwd=sys.argv[2], db=sys.argv[3], port=3306)
     cur = db.cursor()
-    """
-    # Execute the query to fetch all cities of the given state
-    """
-    query = """SELECT cities.id, cities.name FROM cities
-               JOIN states ON cities.state_id = states.id
-               WHERE states.name = %s
-               ORDER BY cities.id ASi"""
-    cur.execute(query, (state_name,))
-
+    cur.execute("""SELECT cities.name FROM
+                cities INNER JOIN states ON states.id=cities.state_id
+                WHERE states.name=%s""", (sys.argv[4],))
     rows = cur.fetchall()
-
-    for row in rows:
-        print(row)
-
-    # Close the cursor and the connection
+    tmp = list(row[0] for row in rows)
+    print(*tmp, sep=", ")
     cur.close()
     db.close()
