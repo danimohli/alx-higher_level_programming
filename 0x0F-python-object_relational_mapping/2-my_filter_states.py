@@ -18,7 +18,6 @@ Requirements:
     - Lists states where name matches the argument in ascending order by id.
     - Results are displayed as (id, name) tuples.
 """
-
 import sys
 import MySQLdb
 
@@ -37,6 +36,10 @@ def list_states_by_name(username, password, db_name, state_name):
     Returns:
         None
     """
+
+    """
+    Connect to Database
+    """
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -47,6 +50,9 @@ def list_states_by_name(username, password, db_name, state_name):
 
     cur = db.cursor()
 
+    """
+    Order Queir
+    """
     query = "SELECT id, name FROM states WHERE name = '{}'
     ORDER BY id ASC".format(state_name)
 
