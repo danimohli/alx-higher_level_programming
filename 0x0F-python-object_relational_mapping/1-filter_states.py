@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-import sys
-import MySQLdb
 """
 modul to list state starting with letter N
 """
+import sys
+import MySQLdb
 
 
 def list_states_starting_with_N(username, password, db_name):
