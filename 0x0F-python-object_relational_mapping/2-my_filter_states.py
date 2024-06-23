@@ -1,22 +1,7 @@
 #!/usr/bin/python3
 """
 Script to list states from the database hbtn_0e_0_usa
-where name matches the argument.
-
-Usage:
-    ./list_states_with_name.py <username> <password> <database> <state_name>
-
-Arguments:
-    <username>: MySQL username
-    <password>: MySQL password
-    <database>: Database name
-    <state_name>: State name to search for
-
-Requirements:
-    - Uses MySQLdb for database connectivity.
-    - Connects to a MySQL server running on localhost at port 3306.
-    - Lists states where name matches the argument in ascending order by id.
-    - Results are displayed as (id, name) tuples.
+where name matches the argume
 """
 import sys
 import MySQLdb
@@ -25,21 +10,10 @@ import MySQLdb
 def list_states_by_name(username, password, db_name, state_name):
     """
     Fetches and prints states from the database where name
-    matches the argument.
-
-    Args:
-        username (str): MySQL username.
-        password (str): MySQL password.
-        db_name (str): Database name.
-        state_name (str): State name to search for.
-
-    Returns:
-        None
+    matches
     """
 
-    """
     Connect to Database
-    """
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
