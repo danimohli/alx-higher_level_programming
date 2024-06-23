@@ -31,7 +31,8 @@ def list_states_starting_with_N(username, password, db_name):
     Execute the query to fetch states with names starting with 'N'
     ordered by id
     """
-    cur.execute("SELECT id, name FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    cur.execute("SELECT id, name FROM states WHERE name
+                LIKE 'N%' ORDER BY id ASC")
 
     """
     Fetch all the results
