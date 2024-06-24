@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-Lists all State objects and corresponding
-City objects from the database hbtn_0e_101_usa.
+Lists all City objects from the database hbtn_0e_101_usa.
 
 Usage:
     ./<script_name>.py <mysql_username> <mysql_password> <database_name>
@@ -14,8 +13,9 @@ Arguments:
 Requirements:
     - Uses SQLAlchemy for database connectivity.
     - Connects to a MySQL server running on localhost at port 3306.
-    - Uses the cities relationship for all State objects.
-    - Results are sorted in ascending order by states.id and cities.id.
+    - Uses only one query to the database.
+    - Uses the state relationship to access the State object linked to the City object.
+    - Results are sorted in ascending order by cities.id.
 """
 
 import sys
@@ -25,22 +25,23 @@ from relationship_state import Base, State
 from relationship_city import City
 
 if __name__ == "__main__":
-
+    # Get arguments from command line
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
 
+    # Create engine and connect to the MySQL database
     engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost:3306/{db_name}')
-
+    
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
-    session = Session()
-    states = session.query(State).outerjoin(State.cities).
-    order_by(State.id, City.id).all()
 
-    for state in states:
-        print(f"{state.id}: {state.name}")
-        for city in state.cities:
-            print(f"    {city.id}: {city.name}")
+    session = Session()
+
+    cities = session.query(City).join(City.state).order_by(City.id).all()
+
+    for city in cities:
+        print(f"{city.id}: {city.name} -> {city.state.name}")
+
     session.close()
