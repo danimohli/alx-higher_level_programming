@@ -32,8 +32,7 @@ if __name__ == "__main__":
     db_name = sys.argv[3]
 
     # Create engine and connect to the MySQL database
-    engine = create_engine(f'mysql+mysqldb://{username}:\
-            {password}@localhost:3306/{db_name}')
+    engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost:3306/{db_name}')
 
     Base.metadata.create_all(engine)
 
@@ -41,8 +40,7 @@ if __name__ == "__main__":
 
     session = Session()
 
-    cities = session.query(City).join(City.
-                                      state).order_by(City.id).all()
+    cities = session.query(City).join(City.state).order_by(City.id).all()
 
     for city in cities:
         print(f"{city.id}: {city.name} -> {city.state.name}")
