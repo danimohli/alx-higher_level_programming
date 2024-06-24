@@ -1,16 +1,7 @@
 #!/usr/bin/python3
 """
 Lists all City objects from the database hbtn_0e_101_usa.
-
-Usage:
-    ./<script_name>.py <mysql_username> <mysql_password> <database_name>
-
-Arguments:
-    <mysql_username>: MySQL username
-    <mysql_password>: MySQL password
-    <database_name>: Name of the database
 """
-
 import sys
 from relationship_state import Base, State
 from relationship_city import City
