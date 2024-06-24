@@ -14,7 +14,8 @@ Requirements:
     - Uses SQLAlchemy for database connectivity.
     - Connects to a MySQL server running on localhost at port 3306.
     - Uses only one query to the database.
-    - Uses the state relationship to access the State object linked to the City object.
+    - Uses the state relationship to access
+    the State object linked to the City object.
     - Results are sorted in ascending order by cities.id.
 """
 
@@ -30,7 +31,8 @@ if __name__ == "__main__":
     password = sys.argv[2]
     db_name = sys.argv[3]
 
-    engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost:3306/{db_name}')
+    engine = create_engine(f'mysql+mysqldb://{username}:\
+            {password}@localhost:3306/{db_name}')
 
     Base.metadata.create_all(engine)
 
