@@ -14,7 +14,8 @@ Requirements:
     - Uses SQLAlchemy for database connectivity.
     - Connects to a MySQL server running on localhost at port 3306.
     - Uses only one query to the database.
-    - Uses the state relationship to access the State object linked to the City object.
+    - Uses the state relationship to access
+    - the State object linked to the City object.
     - Results are sorted in ascending order by cities.id.
 """
 
@@ -31,15 +32,17 @@ if __name__ == "__main__":
     db_name = sys.argv[3]
 
     # Create engine and connect to the MySQL database
-    engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost:3306/{db_name}')
-    
+    engine = create_engine(f'mysql+mysqldb://{username}:\
+            {password}@localhost:3306/{db_name}')
+
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
 
     session = Session()
 
-    cities = session.query(City).join(City.state).order_by(City.id).all()
+    cities = session.query(City).
+    join(City.state).order_by(City.id).all()
 
     for city in cities:
         print(f"{city.id}: {city.name} -> {city.state.name}")
