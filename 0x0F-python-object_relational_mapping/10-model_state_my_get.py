@@ -19,27 +19,20 @@ Requirements:
     - Results are sorted in ascending order by states.id.
     - Displays the states as shown in the example.
 """
-
 import sys
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
+from sqlalchemy import (create_engine)
+from sqlalchemy.orm import sessionmaker
+
 
 if __name__ == "__main__":
-    # Get arguments from command line
-    username = sys.argv[1]
-    password = sys.argv[2]
-    db_name = sys.argv[3]
-
-    # Create engine and connect to the MySQL database
-    engine = create_engine(f'mysql+mysqldb://{username}\
-                           :{password}@localhost:3306/{db_name}')
-
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+                           .format(sys.argv[1], sys.argv[2], sys.argv[3]))
+    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).
-    filter(State.name.like('%a%')).order_by(State.id).all()
-
-    for state in states:
-        print(f"{state.id}: {state.name}")
-    session.close()
+    instance = session.query(State).filter(State.name == (sys.argv[4],))
+    try:
+        print(instance[0].id)
+    except IndexError:
+        print("Not found")
