@@ -39,8 +39,7 @@ if __name__ == "__main__":
 
     session = Session()
 
-    states = session.query(State).outerjoin(
-            State.cities).order_by(State.id, City.id).all()
+    states = session.query(State).outerjoin(State.cities).order_by(State.id, City.id).all()
 
     for state in states:
         print(f"{state.id}: {state.name}")
