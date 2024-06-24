@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-Lists all State objects and corresponding City
-objects from the database hbtn_0e_101_usa.
+Lists all City objects from the database hbtn_0e_101_usa.
 
 Usage:
     ./<script_name>.py <mysql_username> <mysql_password> <database_name>
@@ -10,12 +9,6 @@ Arguments:
     <mysql_username>: MySQL username
     <mysql_password>: MySQL password
     <database_name>: Name of the database
-
-Requirements:
-    - Uses SQLAlchemy for database connectivity.
-    - Connects to a MySQL server running on localhost at port 3306.
-    - Uses the cities relationship for all State objects.
-    - Results are sorted in ascending order by states.id and cities.id.
 """
 
 import sys
