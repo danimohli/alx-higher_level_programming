@@ -1,3 +1,4 @@
 #!/bin/bash
 # Use curl to get the size of the response body
-echo $(curl -s -o /dev/null -w "%{size_download}" "$URL")
+echo "The size of the response body is $(curl -s -o /dev/null -w '%{size_download}' "$1") bytes."
+
