@@ -33,7 +33,7 @@ def find_peak(list_of_integers):
     """
     if not list_of_integers:
         return None
-    
+
     low, high = 0, len(list_of_integers) - 1
     while low < high:
         mid = (low + high) // 2
