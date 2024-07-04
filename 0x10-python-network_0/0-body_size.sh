@@ -1,3 +1,5 @@
+
 #!/bin/bash
-# Use curl to get the size of the response body
-echo "The size of the response body is $(curl -s -o /dev/null -w '%{size_download}' "$1") bytes."
+# Script to get the body size of a request
+curl -Is "$1" | grep -i 'Content-Length' | awk '{print $2}'
+
