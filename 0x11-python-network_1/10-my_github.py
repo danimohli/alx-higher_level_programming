@@ -8,18 +8,19 @@ personal access token.
 import requests
 import sys
 
+
 def get_github_user_id(username, token):
     """
     Uses the GitHub API to display the user ID of the given credentials.
     """
     url = "https://api.github.com/user"
     response = requests.get(url, auth=(username, token))
-    
+
     if response.status_code == 200:
         user_info = response.json()
         print(user_info.get('id'))
     else:
-        print(f"Error code: {response.status_code}")
+        print(None)
 
 
 if __name__ == "__main__":
