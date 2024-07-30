@@ -2,14 +2,7 @@
 
 const request = require('request');
 
-const apiUrl = process.argv[2];
-
-if (!apiUrl) {
-  console.error('Usage: ./completedTasks.js <API_URL>');
-  process.exit(1);
-}
-
-request.get(apiUrl, { json: true }, (error, response, body) => {
+request.get(process.argv[2], { json: true }, (error, response, body) => {
   if (error) {
     console.log(error);
     return;
@@ -25,10 +18,5 @@ request.get(apiUrl, { json: true }, (error, response, body) => {
       }
     }
   });
-
-  for (const userId in tasksCompleted) {
-    if (tasksCompleted.hasOwnProperty(userId)) {
-      console.log(`User ${userId} has completed ${tasksCompleted[userId]} tasks`);
-    }
-  }
+  console.log(tasksCompleted);
 });
