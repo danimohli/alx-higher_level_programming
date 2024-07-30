@@ -27,7 +27,7 @@ request.get(apiUrl, { json: true }, (error, response, body) => {
   });
 
   for (const userId in tasksCompleted) {
-    if (Object.prototype.hasOwnProperty.call(tasksCompleted, userId)) {
+    if (tasksCompleted.hasOwnProperty(userId)) {
       console.log(`User ${userId} has completed ${tasksCompleted[userId]} tasks`);
     }
   }
