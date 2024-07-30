@@ -13,18 +13,12 @@ if (!url || !filePath) {
 
 request.get(url, (error, response, body) => {
   if (error) {
-    console.error(error);
-    return;
+    console.log(error);
+  } else {
+    fs.writeFile(filePath, body, 'utf-8', (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
   }
-  if (response.statusCode !== 200) {
-    console.error(`Failed to retrieve data. Status code: ${response.statusCode}`);
-    return;
-  }
-  fs.writeFile(filePath, body, 'utf-8', (err) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(`The content of ${url} has been saved to ${filePath}`);
-  });
 });
