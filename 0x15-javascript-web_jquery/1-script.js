@@ -1,3 +1,4 @@
-// header collor changen using api
-
-$('header').css('color', '#FF0000');
+/* global $ */
+$(document).ready(() => {
+  $('header').css('color', '#FF0000');
+});
