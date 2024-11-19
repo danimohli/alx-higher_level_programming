@@ -3,6 +3,6 @@
 # raise exception value
 def raise_exception_msg(message=""):
     try:
-        return mes
+        raise NameError(message)
     except NameError:
-        print(message)
+        raise
