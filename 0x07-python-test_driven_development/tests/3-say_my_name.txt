@@ -20,8 +20,10 @@ Real Argument required given with wrong argument (Expect TypeError raised):
     TypeError: last_name must be a string
 
 Supplying no string to both Argument space:
-    >>> say_my_name("", "")
-    My name is
+    >>> say_my_name("")
+    Traceback (most recent call last):
+        ...
+    ValueError: first_name cannot be empty
 
 Not supplying first argument with real value required (Expect TypeError raised):
     >>> say_my_name(4, 'Davidking')
