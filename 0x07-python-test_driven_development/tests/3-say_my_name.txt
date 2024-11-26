@@ -1,0 +1,30 @@
+===========================
+==DOCTEST FOR SAY_MY_NAME==
+===========================
+
+Making `import` statement from module for function require `say_my_name`
+::
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Strings Argument for both module function
+::
+    >>> say_my_name('Danimoh', 'Davidking')
+    My name is Danimoh Davidking
+
+Providing only the first Argument
+::
+    >>> say_my_name('Danimoh')
+    My name is Danimoh
+Real Argument required given with wrong argument (Expect TypeError raise)
+::
+    >>> say_my_name('Danimoh', 9)
+    Traceback (most recent call last):
+         ...
+    TypeError: last_name must be a string
+
+Not supplying first argument with realvalue required (Expecting TypeError rais)
+::
+    >>> say_my_name(4, "DAvidking")
+    Traceback (most recent call last):
+         ...
+    TypeError: first_name must be a string
